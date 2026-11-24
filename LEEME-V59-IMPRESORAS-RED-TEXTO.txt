@@ -1,0 +1,70 @@
+FRY CHICKEN POS V59 — IMPRESORAS DE RED Y TEXTO DIRECTO
+
+PERFIL PREPARADO: 3nStar RPT006 / RPT006-1, papel de 80 mm, ESC/POS.
+La salida por red envia caracteres y comandos de texto. No convierte la factura
+en una imagen y no envia logos, fotografias, QR ni graficos.
+La comanda conserva el formato compacto de V58 y se envia a su propia impresora.
+
+CONFIGURAR EN PC 1
+1. Cierra la version anterior, extrae TODO el ZIP V59 y abre INICIAR.bat.
+2. Conecta ambas impresoras por Ethernet al router o switch del local.
+   PC 1 debe poder comunicarse con sus direcciones IP.
+3. Administrador > Configuracion > Impresoras.
+4. Abre Buscar / configurar impresora de CAJA.
+5. Selecciona Cable de red - texto directo.
+6. Elige la red local y pulsa Buscar en la red. El puerto propuesto es 9100;
+   puedes cambiarlo si la impresora esta configurada con otro puerto RAW TCP.
+7. Selecciona una IP de la lista o escribela manualmente.
+8. Deja el perfil 3nStar RPT006 / ESC/POS, 80 mm y Espanol PC850.
+9. Pulsa Probar conexion y despues Imprimir prueba de texto. Confirma en papel
+   que la prueba salio en CAJA y que se leen n, enie y vocales con tilde.
+10. Guarda la impresora con impresion automatica activada.
+11. Repite desde Configurar impresora de comanda (cocina), usando la IP de COCINA.
+
+BUSQUEDA Y DIRECCIONES
+La busqueda comprueba puertos TCP sin enviar texto de impresion. Una respuesta
+no identifica por si sola el modelo: usa la prueba de texto para confirmar.
+Se propone una red por adaptador, normalmente /24. Puedes escribir otra red IPv4
+de hasta 1024 direcciones. No cambia la IP de la impresora ni la configuracion
+del router. Si no aparece, verifica su IP y puerto con la configuracion del equipo
+o la herramienta oficial de 3nStar. La PC y la impresora deben ser alcanzables.
+Las IP de caja y cocina se guardan por separado. Si una IP cambia, vuelve a
+buscarla y guardarla; no se cambia de dispositivo automaticamente.
+
+TEXTO Y PAPEL
+Se usa la fuente nativa de la impresora. CAI, RTN, rango, fecha limite, detalle,
+impuestos, descuentos, total, envio y desglose de pagos se conservan como texto.
+Los encabezados y las lineas se adaptan al ancho en caracteres.
+El manual RPT006 indica variantes de 42 o 48 columnas con Font A. Se propone 42
+para no cortar las lineas. Si tu prueba confirma 48, puedes seleccionar 48.
+PC850 permite enie y tildes; hay opciones PC437, Windows occidental y ASCII si
+la configuracion del firmware necesita otra tabla. Confirma siempre la prueba.
+El corte se puede desactivar. El avance final se ajusta de 1 a 8 lineas.
+Texto simple elimina tambien los comandos ESC/POS, para equipos que lo requieran.
+La opcion Impresora instalada en Windows conserva el formato con controlador;
+para usar texto directo en estas impresoras Ethernet elige Cable de red.
+
+VENTAS, COLA E IMPRESION
+Cada venta sigue generando una sola factura y una sola comanda original.
+PC 1 realiza los dos envios en segundo plano, por destinos independientes.
+Las terminales no imprimen duplicados por su cuenta. Un fallo de cocina no
+detiene el envio de caja. Si ambas funciones apuntan al mismo destino, sus
+trabajos se serializan para evitar mezclar bytes.
+ENVIADO A IMPRESION indica que se entrego al destino, no que un sensor haya
+confirmado papel. Si no se pudo abrir la conexion, el documento queda NO ENVIADO
+y el administrador puede liberar el original pendiente desde la cola.
+Si hubo una interrupcion durante el envio, queda DUDOSO: comprueba el papel
+antes de solicitar una copia. No se reenvia automaticamente un envio dudoso.
+No se modifican ventas, consecutivos, calculos, reportes SAR ni Access.
+
+VALIDACION REALIZADA
+Busqueda y envio a servidores TCP simulados; configuracion y prueba de texto
+desde la ventana del programa; destinos separados; factura fiscal y pagos
+mixtos; interrupciones de conexion, anulacion y prevencion de reenvios dudosos.
+No se realizo una impresion fisica en tus impresoras: ejecuta la prueba de texto
+desde ambas ventanas de configuracion para verificar IP, idioma y corte.
+
+REFERENCIAS DEL FABRICANTE
+https://3nstar.com/product/direct-thermal-receipt-printer-80mm-3-rpt006/
+https://3nstar.com/wp-content/uploads/2020/07/RPT006-User-Manual.pdf
+https://3nstar.com/printers-download/

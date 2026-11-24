@@ -1,0 +1,124 @@
+FRY CHICKEN POS V55 — CONTABILIDAD AUTOMATICA EN MICROSOFT ACCESS
+
+QUE RECIBES
+Un panel de Access con filtros, indicadores, libro de ventas, detalle por producto,
+pagos, envios separados, turnos, movimientos de caja, alimentacion de empleados,
+consumos internos, anulaciones, auditoria, metas y beneficios de empresas.
+Incluye 22 tablas de negocio, 20 consultas, 17 formularios y 6 informes.
+Dos tablas adicionales controlan los filtros y la sincronizacion.
+
+COMO ACTIVARLO EN PC 1
+1. Cierra la version anterior del POS. Conserva tus respaldos habituales.
+2. Extrae TODO el ZIP V55 a una carpeta con permiso de escritura.
+3. En la computadora que conserva la base principal abre INICIAR.bat y utiliza
+   la funcion PC 1 que ya tenias configurada. No crees otra instalacion
+   vacia para sustituir el historial existente. Esta version usa la misma carpeta
+   persistente de datos que las versiones anteriores.
+4. Para usar especificamente el archivo FRYChicken-Contabilidad-Profesional.accdb
+   entregado, guardalo en una carpeta definitiva local de PC 1 y abrelo con
+   Microsoft Access. Si Office pregunta si habilitas el contenido de este archivo,
+   revisa su origen y habilitalo para utilizar sus botones. No es necesario cambiar
+   globalmente la seguridad de Office.
+5. Pulsa VINCULAR ESTE ARCHIVO AL POS V55, desde Access en PC 1.
+   No lo pulses desde la computadora de consulta del contador.
+6. En el POS, administrador > Contabilidad > Sincronizar ahora. Espera que indique
+   ACTUALIZADO y revisa la hora de confirmacion y la ruta del archivo.
+7. Las nuevas ventas se agregan automaticamente mientras PC 1 ejecuta V55.
+   Access no necesita estar abierto. Las terminales mandan las ventas a PC 1;
+   solamente PC 1 escribe esta copia para evitar archivos independientes.
+
+SI NO VINCULAS UN ARCHIVO
+V55 crea una copia automaticamente en:
+%LOCALAPPDATA%\FRYChickenPOS\contabilidad\FRYChicken-Contabilidad.accdb
+ABRIR_CONTABILIDAD_ACCESS.bat abre el destino configurado despues de iniciar V55.
+El archivo entregado contiene la copia del historial disponible al prepararlo;
+solo se mantiene al dia cuando se vincula y se usa V55. Copias que hagas en otras
+carpetas no se actualizan por si solas. Vincular el archivo escribe unicamente la
+configuracion access_sync.json del usuario Windows de esa PC 1.
+
+REQUISITOS
+Windows y Microsoft Access o un motor ACE compatible instalado. Para abrir el
+panel completo, se necesita Microsoft Access. Se detecta el motor de 64 bits y
+se intenta tambien PowerShell de 32 bits si falta ese proveedor. Esta entrega
+es el codigo fuente del POS, como las anteriores; no es un ejecutable compilado.
+BUILD_EXE_WINDOWS.bat incluye ahora la plantilla Access y el sincronizador.
+
+COMO CONSULTAR
+DESDE y HASTA: dias que quieres revisar; HASTA incluye todo ese dia.
+SUCURSAL, TERMINAL y CAJERO: elige quien hizo las ventas.
+ESTADO: emitidas, anuladas o todas. Las sumas de ingresos excluyen las anuladas.
+PAGO: efectivo, tarjeta, transferencia o mixto. Una compra mixta aparece al filtrar
+por cualquiera de los medios que contiene. El libro muestra la factura completa;
+la vista Medios de pago muestra el desglose para conciliar.
+CLIENTE: NORMAL o RTN. DOCUMENTOS: fiscal, interno o todos.
+Pulsa APLICAR FILTROS antes de abrir detalles o exportar. LIMPIAR FILTROS restaura
+todo el historial. Puedes ordenar y filtrar columnas en las hojas de datos.
+VER FICHA DE FACTURA abre el documento seleccionado en Facturas; si esa vista no
+esta abierta, pide el ID interno (no el numero fiscal).
+EXCEL VENTAS exporta el libro filtrado junto al archivo Access. PDF RESUMEN y
+PDF SAR crean informes filtrados. Los otros 4 informes estan en el panel de
+navegacion de Access: ventas detalladas, resumen diario, caja y almuerzos.
+El panel recalcula los indicadores cada 15 segundos. Para renovar un detalle
+que ya estaba abierto, cierralo y vuelve a abrirlo despues de sincronizar.
+
+ALCANCE DE LOS FILTROS
+Las vistas de ventas usan todos los filtros del panel. Almuerzos, consumos y
+turnos usan fechas, sucursal y terminal; los turnos se filtran por apertura.
+Movimientos usa fechas y sucursal; Auditoria usa fechas. Metas, beneficios y
+notas de credito muestran sus registros completos.
+SAR usa fechas, sucursal, terminal y alcance fiscal/interno; incluye las ventas
+con tarjeta aunque se haya elegido otro alcance documental y excluye anuladas.
+No se limita por medio de pago ni por cajero. Sigue las reglas del reporte SAR
+del POS; es una consulta de apoyo, no una presentacion automatica al SAR.
+
+COMO INTERPRETAR LOS NUMEROS
+Ventas de productos = total de productos, despues de descuentos, incluido ISV.
+Total cobrado = productos + envio. No se suma dos veces.
+Envio se muestra separado y no incrementa ingresos por venta de productos.
+Almuerzos gratis = costo interno registrado, cobrado cero y sin factura fiscal.
+Un costo de almuerzo no retira efectivo automaticamente: las salidas reales de
+caja se registran como movimientos para evitar descontarlas dos veces.
+Valor de referencia del almuerzo no es su costo. CostoPendiente avisa cuando
+el POS no tiene costo registrado. No se calcula un costo inventado.
+Efectivo aplicado = importe de compras pagado en efectivo; no es todo el dinero
+fisico del cajon. El turno suma fondo inicial, efectivo, entradas y salidas.
+Una anulacion conserva la factura y su motivo, pero sale de las ventas vigentes.
+Notas de credito conserva las existentes en el POS; anular no inventa una nota
+fiscal adicional ni descuenta dos veces el mismo documento.
+Los historicos sin bases fiscales completas quedan marcados DesgloseCompleto=No;
+las bases desconocidas permanecen vacias. No deben interpretarse como cero.
+
+SI ACCESS NO SE ACTUALIZA
+Revisa Contabilidad en el POS: muestra ruta, ultima confirmacion y error.
+Si Access esta abierto en modo exclusivo o el archivo esta bloqueado, cierra
+esa apertura y pulsa Sincronizar ahora. Los cambios pendientes se reintentan.
+La venta queda primero confirmada en la base principal. La proyeccion de Access
+es asincrona, normalmente tarda segundos y no promete simultaneidad exacta.
+La cola pendiente se conserva en la base para volver a intentarlo al reiniciar.
+Si una base restaurada contiene menos historial que el archivo Access, o pertenece
+a otra instalacion, se rechaza la mezcla; se requiere revisar el respaldo correcto.
+No borres el archivo Access ni la base para resolver ese aviso.
+
+DATOS Y MANTENIMIENTO
+Access es una copia contable de consulta; el POS sigue controlando correlativos,
+autorizaciones, caja e impresion. Cambia ventas y anulaciones desde el POS.
+No edites las tablas espejo: la siguiente sincronizacion puede reemplazar cambios
+cuando se actualice ese registro. No combines varios negocios independientes
+en este mismo archivo. Las cajas de una misma base principal si quedan juntas.
+No contiene claves de empleados, contrasenas de sucursal, correo, TOTP ni secretos
+de red. Tampoco incluye fotos de productos o autorizaciones; el respaldo completo
+del POS conserva lo necesario para restaurarlo. Access no sustituye ese respaldo.
+El archivo contable tiene nombres, RTN y montos: guardalo con los permisos Windows
+correspondientes. Los roles del POS no protegen un archivo copiado fuera del POS.
+Se muestra aviso al superar 1.5 GB y se detiene esta copia cerca de 1.85 GB para
+solicitar mantenimiento; el historial sigue en el POS. Access tiene limite de 2 GB.
+Compactar y reparar se hace con respaldo y sin el POS escribiendo al archivo.
+Referencia del limite: https://support.microsoft.com/en-us/access/access-specifications
+
+COMPONENTES TECNICOS
+access_model.py: instantanea coherente y de solo lectura del SQLite principal.
+access_sync.py: cola durable, reintentos, estado y sincronizacion en segundo plano.
+access_apply.ps1: escritura DAO transaccional y comparacion de huellas por registro.
+access_template.accdb: plantilla vacia; nunca se distribuyen ventas reales en el ZIP.
+Cada lote de Access se confirma completo o se revierte. No cambia el consecutivo
+ni genera nuevas impresiones. Se identifica cada factura por su ID de origen.

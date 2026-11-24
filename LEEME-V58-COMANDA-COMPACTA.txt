@@ -1,0 +1,15 @@
+FRY CHICKEN POS V58 — COMANDA COMPACTA
+
+Se quitaron: COMANDA COCINA, la terminal, NOTAS, el texto de preparacion/no factura
+y la repeticion de COMER AQUI, PARA LLEVAR o PARA ENVIO en la parte superior.
+El tipo de pedido aparece una sola vez al final, seguido de las indicaciones.
+Se conservan sucursal, orden, fecha, cajero, nombre del pedido cuando exista,
+cantidades y productos. Cant. y Descripcion se imprimen en negro y negrita.
+Se redujeron espacios, margenes y el largo minimo de pagina de cocina.
+Se verificaron las vistas en 58 y 80 mm sin enviar pedidos a la impresora real.
+
+Cierra la version anterior, extrae todo el ZIP y abre INICIAR.bat en V58.
+PC 1 debe ejecutar esta version, porque prepara e imprime las comandas.
+Mantiene los cambios contables y el informe SAR de V57.
+Las comandas que ya estaban guardadas en la cola pueden conservar su texto anterior;
+las nuevas y las copias generadas con esta version usan el formato actualizado.

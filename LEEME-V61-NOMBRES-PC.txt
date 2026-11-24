@@ -1,0 +1,10 @@
+FRY CHICKEN POS V61 — NOMBRES DE EQUIPOS
+
+El servidor principal se muestra como PC 1.
+La primera PC adicional se muestra como PC 2, la siguiente PC 3, y asi sucesivamente.
+Se usa el mismo nombre en pantalla, mensajes, factura, cuadre y datos de Access.
+Los IDs y claves de vinculacion, ventas y consecutivos permanecen iguales.
+Ejemplo: el ID de vinculacion 1 corresponde a PC 2; no cambies el ID que ya tenias.
+
+Cierra las cajas pendientes, cierra el programa anterior y extrae todo el ZIP.
+Abre INICIAR.bat de V61 en PC 1 y en las demas PCs que usen el sistema.

@@ -1,0 +1,118 @@
+FRY CHICKEN POS V44 — VARIAS CAJAS, UN CORRELATIVO Y UNA IMPRESIÓN CENTRAL
+
+QUÉ CAMBIA
+PC 1 guarda la única base de facturación del local, asigna todos los números y envía facturas/comandas a sus impresoras.
+Las demás PCs son TERMINALES: cada empleado inicia sesión con su código y solo opera en la sucursal autorizada. No generan facturas locales ni llevan otro correlativo.
+El administrador asigna los empleados permitidos en cada terminal. Los nombres de las terminales son independientes de los nombres y códigos de los empleados.
+Se conservan el CAI, productos, facturas, metas, menú gratuito, modalidades, cargos de envío y respaldo de V43.
+
+ANTES DE CAMBIAR
+Cierra las versiones anteriores en TODAS las PCs.
+Conserva una copia del respaldo completo de la computadora cuyo correlativo es el vigente. Esa será PC 1.
+Si las computadoras ya tenían bases independientes con ventas distintas, consérvalas: esta actualización no las fusiona ni corrige duplicados históricos. Solo se utiliza como base activa la de PC 1.
+La migración guarda una copia .db anterior al cambio y conserva el siguiente número disponible. No reinicia el CAI ni imprime facturas históricas.
+El turno abierto anterior se conserva como turno de PC 1. Las terminales nuevas abren sus propios turnos.
+No vuelvas a ejecutar V43 sobre la base actualizada con turnos de varias terminales abiertos.
+
+CONFIGURAR PC 1
+1. Descomprime V44 y ejecuta INICIAR.bat. Requiere Python 3.12 de 64 bits; la instalación inicial descarga los mismos componentes de la versión anterior.
+2. Selecciona PC 1 / SERVIDOR. Si hay una base existente, introduce su contraseña de administrador para autorizar la activación.
+3. Revisa sucursal, CAI y siguiente correlativo antes de vender. Son los datos existentes de esa PC.
+4. Configura las dos impresoras en Administrador > Configuración > Impresora. Las impresoras deben estar instaladas en Windows de PC 1. Mantén la impresión automática activada si quieres envío inmediato.
+5. Ejecuta HABILITAR_RED_MAQUINA1.ps1 en PowerShell como administrador. Si Windows lo requiere: powershell -ExecutionPolicy Bypass -File ".\HABILITAR_RED_MAQUINA1.ps1"
+El script abre solo TCP 5060 para la subred local y Tailscale, con las rutas de Python usadas por el programa.
+6. Reserva la IP de PC 1 en el router. La base queda en su disco local; las terminales se comunican con el programa.
+7. En Terminales e impresión revisa los empleados que podrán atender en PC 1. Hasta configurar esta lista se conserva el acceso de los empleados activos de la instalación anterior.
+
+CREAR TERMINALES DESDE EL ADMINISTRADOR
+En PC 1 > Terminales e impresión:
+- Pon un nombre, por ejemplo CAJA 2 o CAJA 3.
+- Selecciona la MISMA sucursal del local y marca sus empleados autorizados.
+- Guarda. Copia el número de vinculación y la clave mostrados. El número interno puede ser 1 aunque el nombre sea CAJA 2: usa exactamente el que aparece en pantalla.
+La clave solo se muestra al crear o renovar. No es el código del empleado ni la contraseña del administrador.
+Editar permisos, retirar la terminal o renovar la clave invalida sus sesiones anteriores. Sus documentos históricos se conservan.
+Puedes autorizar varios empleados para relevos; cada sesión identifica al empleado real.
+
+CONFIGURAR CADA PC ADICIONAL
+1. Descomprime V44 y abre INICIAR.bat.
+2. Selecciona TERMINAL / CAJA CONECTADA.
+3. Escribe la dirección de PC 1, por ejemplo http://192.168.1.50:5060.
+4. Introduce el número y la clave de vinculación creados por el administrador.
+5. Inicia sesión con el código del empleado autorizado. Abre su caja con el efectivo inicial correspondiente a esa terminal.
+No copies la base de PC 1 ni configures un CAI en las terminales. Las bases antiguas de esas PCs se conservan sin usarse.
+Cada terminal debe tener su propia vinculación. No reutilices la misma clave/ID en dos computadoras.
+F8 permite revisar la configuración de la PC. Los cambios se aplican al cerrar y volver a abrir el programa.
+La conexión con PC 1 está cifrada y autenticada. Las horas de Windows de los equipos deben estar sincronizadas.
+Puedes utilizar la IP privada de Tailscale si necesitas acceso por Internet; no es necesario dentro de una LAN funcional.
+
+CÓMO SE FACTURA
+Todos los productos, precios, impuestos y permisos se consultan en el servidor.
+Las operaciones de escritura se coordinan en PC 1. Dos cobros simultáneos reciben números consecutivos de la misma sucursal.
+Se mantiene un identificador único por cobro. Reintentar el mismo cobro devuelve la misma factura; no consume un número nuevo ni crea otros originales de impresión.
+El documento se guarda, se confirma su respaldo cuando está habilitado y queda en la cola central. La terminal muestra la factura, pero no la imprime en su propio equipo.
+Las facturas y la contabilidad incluyen el empleado y la terminal. Las metas y reportes del local suman las ventas de todas las terminales.
+
+CAJA Y TURNOS
+Cada terminal tiene su apertura, movimientos, efectivo esperado y cierre. Cerrar una terminal no cierra las demás.
+Cada turno nuevo queda asociado al empleado que lo abrió. Otro empleado no puede usarlo para registrar cobros o movimientos hasta que se cierre.
+El administrador puede cerrar un turno desde Terminales e impresión indicando el efectivo contado. Queda registrada su intervención.
+Los turnos anteriores a V44 sin empleado propietario se conservan como turnos heredados/supervisados de PC 1.
+El reporte contable general incluye todos los turnos y los reportes de ventas muestran empleado/terminal.
+
+IMPRESIÓN SIN REPETICIÓN AUTOMÁTICA
+La cola se guarda en la base, con un original de factura y un original de comanda por pedido.
+- EN COLA: espera una impresora configurada y disponible.
+- PAUSADA: la impresión automática de ese tipo estaba desactivada. Puede liberarse desde el administrador.
+- PREPARANDO: el programa está preparando el documento.
+- ENVIANDO: se inició la entrega al sistema de impresión de Windows.
+- ENVIADO A WINDOWS: Windows confirmó la entrega a su cola. No es una confirmación física de que salió el papel.
+- DUDOSO: hubo cierre/fallo durante un envío; revisa la impresora antes de pedir una copia.
+- NO ENVIADO: falló antes de entregar el documento; puede reintentarse.
+- CANCELADA: la factura se anuló antes de enviar ese documento.
+La cola se consulta desde el menú hamburguesa de cualquier terminal o desde el panel del administrador.
+Pedir imprimir un original que ya está pendiente no crea otro documento. Las copias son explícitas, idempotentes y auditadas; no generan otra factura ni gastan correlativo.
+Tras reiniciar, se retoman los pendientes que no habían comenzado a enviarse. Los envíos dudosos no se repiten automáticamente.
+Una anulación cancela las impresiones que todavía no se habían enviado. Si se pide una copia de una factura anulada, se identifica como anulada.
+
+SI SE PIERDE LA CONEXIÓN DURANTE UN COBRO
+La terminal conserva el pedido y su identificador, incluso al reiniciar el programa.
+Se bloquea un cobro nuevo mientras exista uno sin confirmar.
+Menú hamburguesa > Cobro pendiente:
+- Consultar resultado: recupera la factura existente si PC 1 ya la guardó.
+- Reintentar el mismo cobro: utiliza exactamente los datos y el identificador originales, con el mismo empleado.
+- Cancelar si no existe factura: PC 1 debe confirmar que no existe ni sigue procesándose; deja auditoría y bloquea paquetes tardíos del pedido cancelado.
+El administrador puede revisar/cancelar un pendiente de otra sesión de la misma terminal. Para reintentar su emisión se requiere el empleado original.
+La terminal conserva la confirmación hasta que la interfaz reconoce la factura. Una restauración atrasada del servidor no se trata como permiso para volver a emitir un cobro ya confirmado.
+No se crean facturas sin conexión con PC 1. El autenticador de emergencia del respaldo no convierte una terminal en servidor.
+
+RESPALDOS Y RECUPERACIÓN
+Solo PC 1 envía el respaldo completo del local al receptor v41 existente. Los clientes consultan ese mismo estado central.
+No necesitas reinstalar ni cambiar el receptor de respaldo.
+La PC receptora puede ser independiente o compartir equipo con una terminal: ambos procesos tienen funciones y puertos distintos.
+La autorización TOTP de emergencia conserva su alcance de 30 minutos por sesión cuando falla el respaldo; el servidor central debe seguir funcionando.
+Si falla PC 1, detén la facturación, mantén fuera de uso el servidor anterior y restaura la última copia en una PC limpia. Selecciona PC 1 y vuelve a configurar las impresoras y la red.
+Las impresiones recuperadas de una copia se marcan para revisión; no se imprimen automáticamente todos los pendientes históricos. Revisa papel/entrega y solicita las copias necesarias.
+En las terminales usa F8 para cambiar la IP del nuevo servidor manteniendo su ID y clave. Puedes actualizar la dirección o una clave renovada aun si hay un cobro pendiente.
+No cambies la identidad/función de una terminal con un pendiente sin resolver. Para sustituir el servidor, utiliza una PC limpia si la candidata conserva un cobro incierto.
+No mantengas dos máquinas 1 activas con la misma base/correlativo. Esta entrega no incluye promoción automática de otro servidor.
+Las claves de autenticador/correo protegidas por Windows pueden requerir nueva vinculación al restaurar en otra PC, como en V40.
+
+ENCENDIDO Y APAGADO
+PC 1 debe estar encendida, con su sesión de Windows iniciada y el programa abierto. No hace falta que un cajero haya iniciado sesión dentro del POS para atender a las terminales.
+Cerrar el POS de PC 1 detiene facturación e impresión de todas las terminales; se muestra una advertencia.
+ACTIVAR_INICIO_CAJA.ps1 permite abrir el programa al entrar ese usuario de Windows, después de configurarlo una vez. No es un servicio previo al inicio de sesión de Windows.
+El receptor de respaldo v41 sí conserva su propio arranque como servicio/tarea, independiente del POS.
+En cada PC se evita abrir dos instancias de la misma función con el mismo perfil.
+
+VERIFICACIÓN REALIZADA
+- Ocho cobros simultáneos desde cuatro terminales, con correlativos fiscales 501–508 consecutivos y originales únicos.
+- Sesiones independientes, empleados autorizados, revocación de terminal, caja/turno separado y cierre por administrador.
+- Reintentos idénticos y cambios tras un pago rechazado; bloqueo de pedidos alterados con el mismo identificador.
+- Respuesta perdida después de guardar, reinicio de terminal, recuperación sin duplicar y cancelación que impide paquetes tardíos.
+- Ciclo de cola, impresión manual sobre un original pendiente, copias idempotentes, envío dudoso y restauración sin reimprimir originales antiguos.
+- Trabajador Qt con impresoras simuladas: una entrega a caja y una a cocina; las llamadas automáticas de la terminal no imprimen de nuevo.
+- Interfaz real de terminal con transporte cifrado, cobro con botones, confirmación, creación de terminales y reconexión al renovar el servidor.
+- Migración de V43: orden 80 y fiscal 731 conservados; siguientes 81 y 732 intactos; no se encolaron facturas antiguas.
+- Regresiones de respaldo, envíos/SAR y menú gratuito de empleados aprobadas.
+- El script de firewall se verificó sintácticamente. No se modificó el firewall, el inicio de Windows ni la instalación de tus PCs durante estas pruebas.
+Pendiente: instalación y prueba con las PCs, LAN e impresoras reales del negocio.

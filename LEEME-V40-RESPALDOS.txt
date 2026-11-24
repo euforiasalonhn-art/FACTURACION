@@ -1,0 +1,103 @@
+FRY CHICKEN POS V40 — RESPALDO CONFIRMADO POR RED LOCAL E INTERNET
+
+QUÉ INCLUYE
+- Todo V39: comandas, dos impresoras, notas, almuerzos gratis y metas.
+- Receptor de respaldos separado para la segunda PC.
+- Panel Administrador > Respaldos en red.
+- Confirmación remota de cada factura antes de confirmar localmente e imprimir.
+- Bloqueo si la PC receptora no responde.
+- Excepción temporal con el MISMO autenticador de anulación (6 dígitos / 5 minutos).
+- Herramientas de exportación, restauración e inicio con Windows.
+Se entrega SIN COMPILAR. No se instalaron tareas, Tailscale ni configuraciones reales en tus PCs.
+
+1. CONECTAR LAS DOS PCs
+Instala Tailscale en ambas PCs desde https://tailscale.com/download/windows
+Vincula ambas a tu misma red privada de Tailscale. Autoriza solo los equipos del negocio.
+En Tailscale activa Preferences > Run Unattended para que siga conectado tras reiniciar y sin iniciar sesión.
+Anota la dirección IPv4 de Tailscale de la PC receptora: empieza normalmente por 100.
+Para conectar PCs en lugares diferentes por Internet usa Tailscale, sin abrir puertos del router.
+En el mismo local también puedes conectar directamente por la IP privada de la LAN, sin Internet ni Tailscale. El programa cifra los datos y las confirmaciones con la clave del receptor.
+Si quieres ambos caminos, configura la IP local como principal y la IP de Tailscale como alternativa. El programa prueba la alternativa si falla la primera. Reserva la IP local de la receptora en el router para que no cambie.
+Documentación: https://tailscale.com/docs/how-to/run-unattended
+Cifrado: https://tailscale.com/docs/concepts/tailscale-encryption
+
+2. PREPARAR LA PC RECEPTORA
+Descomprime este ZIP en una carpeta permanente. Requiere Python 3.12 de 64 bits.
+Ejecuta CONFIGURAR_RESPALDO.bat. Instala Flask y muestra una clave de conexión exclusiva.
+Esta clave larga conecta los equipos. Es distinta del código temporal del autenticador.
+Los archivos se guardan en %LOCALAPPDATA%\FRYChickenBackup, separados por instalación de caja.
+Para arrancar manualmente puedes usar INICIAR_RECEPTOR.bat.
+Para iniciar ANTES de entrar a Windows:
+- Configura primero el receptor con tu usuario habitual de Windows.
+- Abre PowerShell como administrador con ese mismo usuario y ejecuta INSTALAR_INICIO_RESPALDO.ps1.
+- Si la política local lo exige: powershell -ExecutionPolicy Bypass -File ".\INSTALAR_INICIO_RESPALDO.ps1"
+El script registra la tarea FRYChickenBackupReceptor como SYSTEM al encender, con reinicio por fallo; incluye la ruta absoluta a los datos de tu usuario.
+Abre en el firewall el puerto TCP 5058 limitado a la subred local y a direcciones de Tailscale.
+No ejecutes el receptor manual y la tarea simultáneamente en el mismo puerto.
+La tarea depende de que conserves la carpeta del programa y Python. No muevas ni elimines esa carpeta.
+La PC receptora no debe suspenderse mientras caja esté trabajando.
+
+3. ACTIVAR EN LA PC DE CAJA
+Cierra V39 y abre INICIAR.bat de esta versión.
+Administrador > Respaldos en red:
+- Marca Exigir respaldo remoto para facturar.
+- Dirección principal: http://IP-LOCAL:5058, por ejemplo http://192.168.1.50:5058, para funcionar en LAN incluso sin Internet.
+- Dirección alternativa: http://IP-DE-TAILSCALE:5058, por ejemplo http://100.80.10.20:5058, para usar Internet cuando no estén en la misma LAN.
+- Si solo usarás Internet, utiliza la IP de Tailscale como principal y deja alternativa vacía.
+- Copia la clave larga del receptor.
+- Pulsa Guardar y comprobar. Debe aparecer RESPALDO CONECTADO.
+No uses la IP de ejemplo literalmente. Usa la de tu PC receptora.
+HTTP se admite con IP de LAN privada, Tailscale o loopback de pruebas; el contenido de las solicitudes y respuestas está cifrado con Fernet y autenticado. También admite HTTPS con certificado válido.
+Además se usan firmas HMAC, confirmaciones vinculadas a cada solicitud y verificación del hash del archivo guardado. Las horas de ambas PCs deben estar sincronizadas.
+La clave larga protege la conexión: guárdala solo en los equipos del negocio. Los respaldos exportados quedan sin cifrado de transporte para poder restaurarlos y deben mantenerse privados.
+En configuración del administrador verifica que el autenticador de anulación esté activado para disponer de la excepción.
+Hasta que actives esta configuración, V40 conserva el comportamiento local anterior.
+Opcional: ACTIVAR_INICIO_CAJA.ps1 agrega el POS al inicio de sesión del usuario de caja.
+
+4. FUNCIONAMIENTO
+Antes de vender se comprueba la conexión y se envían cambios pendientes.
+Al generar la factura se envía una copia de la transacción completa antes de confirmarla en caja. El receptor valida que la base pueda abrirse, guarda el archivo de forma atómica, verifica su hash y responde.
+Solo después se confirma la factura local y continúa la impresión.
+La cabecera muestra la última factura confirmada remotamente y su fecha.
+Se reintenta cada 15 segundos mientras la aplicación esté abierta y al intentar vender.
+Si el receptor está apagado, Tailscale desconectado o la clave no coincide, se bloquean nuevas facturas.
+La copia incluye TODO el historial disponible en la base de caja, no solo las ventas nuevas: también incluye empleados, catálogo, CAI, metas, comandas y almuerzos.
+No puede reconstruir ventas que hayan sido borradas antes de usar el programa.
+Cada copia es completa y comprimida. Se conservan los dos puntos recientes y la última copia de cada día. Cada copia completa contiene las ventas desde el primer día que estén en la base.
+No sustituye una factura ya confirmada por una copia que suprima facturas o cambie su numeración histórica.
+Es un respaldo, no una caja compartida ni un mecanismo para facturar simultáneamente desde varias PCs con la misma identidad.
+Los ajustes y otros cambios también se intentan respaldar automáticamente. El bloqueo estricto se aplica a ventas, almuerzos y registros especiales.
+
+5. SI LA RECEPTORA SE DAÑA: AUTORIZACIÓN DE EMERGENCIA
+Menú hamburguesa > Estado del respaldo > Autorización de emergencia del administrador.
+Escribe motivo y el código actual del MISMO autenticador que utilizas para anular facturas.
+El código habilita esta sesión durante 30 minutos y deja auditoría con el responsable y motivo.
+El código de ese período queda usado: no podrá reutilizarse para anular ni autorizar otra excepción. Espera el siguiente código de 5 minutos si hace falta otra operación.
+Tras cinco códigos incorrectos se bloquean intentos hasta el próximo período.
+Al cerrar sesión termina la autorización. Al vencer se requiere una nueva si sigue la desconexión.
+Durante emergencia se guarda localmente; NO hay garantía de copia remota de las ventas pendientes. Al recuperar conexión se envía todo el historial.
+Si se interrumpe la comunicación justo después de que el receptor pudiera guardar una transacción, el sistema puede exigir reconectar o recuperar la copia remota antes de autorizar otra venta. Evita reutilizar una numeración que ya esté en la otra PC.
+
+6. RECUPERAR SI SE DAÑA LA PC DE CAJA
+En la receptora ejecuta EXPORTAR_ULTIMO_RESPALDO.bat.
+Selecciona la instalación correcta. Exporta el archivo realmente confirmado por el manifiesto y abre su carpeta.
+Copia el .json.gz exportado a una PC nueva (USB u otro medio).
+En la PC nueva:
+- Instala Python 3.12 y descomprime este programa.
+- Ejecuta CONFIGURAR_RESPALDO.bat solo para preparar Python/Flask, si aún no existe .venv. No necesitas activar el receptor en esa PC.
+- Cierra el POS. Ejecuta RESTAURAR_RESPALDO.bat e indica la ruta del .json.gz.
+- Escribe RESTAURAR y la contraseña del administrador que tenía el respaldo.
+- La herramienta verifica la copia, restaura y muestra la última factura.
+- Abre INICIAR.bat para instalar los componentes restantes y trabajar.
+No sobrescribe una base de datos existente: utiliza una PC/carpeta de datos nueva.
+La PC de caja anterior debe quedar fuera de uso antes de reanudar, para no emitir simultáneamente con la misma numeración.
+En otra instalación de Windows, vuelve a vincular el autenticador y las claves de correo: la protección DPAPI de Windows no es portable entre PCs. Los empleados, ventas y números se conservan.
+La configuración del receptor y la identidad de caja sí se conservan en el respaldo. Comprueba conexión antes de facturar.
+
+7. VERIFICACIONES REALIZADAS
+Receptor HTTP real en loopback, cifrado de solicitudes/respuestas, alternativa de conexión, firmas de acceso, rechazo de regresión del historial, confirmación remota ANTES del commit local, bloqueo y reversión ante desconexión simulada, excepción con TOTP protegido por Windows, rechazo de reutilización del código, vencimiento y reenvío de pendientes: aprobados.
+Restauración completa en carpeta nueva: facturas históricas y siguiente número conservados; contraseña incorrecta y sobrescritura de base existente rechazadas.
+Interfaz Qt: aviso de desconexión, bloqueo al cajero, autorización con autenticador, venta en emergencia y respaldo al reconectar: aprobado sin errores de JavaScript.
+Los scripts de inicio automático se verificaron sintácticamente, pero no se instalaron tareas ni se reinició Windows durante la prueba.
+Límite de esta entrega: copia completa de hasta 256 MB antes de comprimir y 64 MB comprimida; la operación se bloquea si excede el límite. El tiempo de venta depende del tamaño de datos y velocidad del enlace.
+Pendiente de instalación y prueba entre tus dos PCs reales, por LAN y por Internet/Tailscale. No se crearon cuentas de Tailscale ni se configuró ningún equipo real.

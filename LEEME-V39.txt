@@ -1,0 +1,54 @@
+FRY CHICKEN POS V39 — COMANDAS, ALMUERZOS Y METAS
+
+INICIO
+Cierra la versión anterior, descomprime todo el ZIP y abre FRYChickenPOS/INICIAR.bat.
+Se entrega el código sin compilar, igual que la versión V38.
+Conserva la misma carpeta de datos de Windows y su respaldo JSON completo automático.
+No incluye datos, ventas ni contraseñas de las pruebas.
+
+DOS IMPRESORAS
+Administrador > Configuración > Impresora.
+1. Configura la impresora de caja con el botón existente.
+2. Configura la impresora de comanda (cocina) con el nuevo botón.
+Cada una tiene su propio nombre de cola de Windows, ancho de 58/80 mm y opción automática.
+Instala antes ambas impresoras en Windows. Cocina puede ser una impresora de red compartida si Windows la reconoce como cola instalada.
+Las ventas envían la factura a caja y la comanda a cocina cuando ambas opciones automáticas están activadas.
+Los almuerzos generan únicamente comanda de cocina. No generan factura de caja.
+Las dos impresiones se procesan en cola sin sobrescribir el contenido del otro documento.
+El envío correcto a Windows no confirma que haya salido papel. Falta comprobarlo con tus impresoras reales.
+
+NOTAS Y COMANDAS
+En la compra actual, abre NOTAS del pedido.
+Escribe nombre, modalidad (Comer aquí / Para llevar / Domicilio) y notas, por ejemplo PIEZA PECHUGA.
+La comanda imprime fecha, número, nombre, modalidad, cajero, cantidades, productos y notas al final.
+Se omiten precios, impuestos y CAI para que cocina vea la información de preparación.
+La factura mantiene su número de orden anterior y agrega el número de comanda de cocina.
+Menú hamburguesa > Comandas de cocina permite ver y reimprimir las últimas 100 de la sucursal.
+Las notas corresponden solo al pedido actual y se limpian después de guardarlo.
+
+ALMUERZOS DE EMPLEADOS
+Marca Almuerzo de empleado · gratis o entra desde el menú hamburguesa.
+Selecciona al empleado activo, productos y costo real del almuerzo.
+El total cobrado es cero. El precio del menú es únicamente referencia.
+Si desconoces el costo, deja cero: se mostrará como pendiente, nunca como precio de venta convertido en gasto.
+Administrador > Almuerzos de empleados permite consultar por sucursal/fecha, registrar o corregir el costo, exportar CSV y abrir la comanda.
+Los costos se presentan como gasto interno de alimentación separado de ingresos. No producen una salida física de efectivo automática.
+No se crean facturas, no se consume número CAI ni número de factura, y no aumenta ventas, efectivo esperado, informes SAR ni metas.
+El descuento de empleado para compras pagadas sigue siendo una opción distinta del almuerzo gratis.
+No se reclasifican automáticamente facturas históricas; se conservan tal como fueron emitidas.
+
+METAS
+Administrador > Metas de ventas permite crear varias metas para cada sucursal, con nombre, monto y fechas inclusivas.
+Se pueden editar e inactivar.
+Cada barra muestra avance, ventas acumuladas y monto faltante.
+La sucursal consulta sus metas desde Menú hamburguesa > Metas de ventas.
+El aviso de meta alcanzada se muestra dentro de la aplicación al actualizar, después de vender y cada 30 segundos mientras está abierta.
+Al pulsar Entendido se recuerda el aviso por empleado/administrador en ese navegador local. Una edición de meta permite un nuevo aviso.
+Se suman importes finales de ventas emitidas durante el período; las ventas anuladas y consumos sin cobro quedan excluidos.
+No hay sincronización entre computadoras: conserva el funcionamiento local de V38.
+
+VERIFICACIÓN
+Pruebas de separación de almuerzos, CAI, caja, metas, anulación, acceso por sucursal, reintentos, notas escapadas y actualización de costos: aprobadas.
+Prueba de interfaz Qt con registro de almuerzo, visualización de comanda/notas, panel de almuerzos, barra al 100% y notificación de meta: aprobada.
+Prueba de cola con destinos caja/cocina y anchos distintos: aprobada usando impresoras simuladas.
+Impresión física pendiente de validación con los equipos del negocio.

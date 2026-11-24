@@ -1,0 +1,35 @@
+FRY CHICKEN POS V42 — MENÚ GRATUITO DE EMPLEADOS
+
+ADMINISTRADOR
+Entra en Almuerzos de empleados > Configurar productos gratuitos para empleados.
+Pulsa Cargar productos. Para cada producto elige:
+- No gratuito (predeterminado, incluidos complementos).
+- Plato gratuito.
+- Refresco gratuito.
+Pulsa Guardar menú gratuito. Puedes autorizar varios platos y varios refrescos para que el empleado elija entre ellos.
+Un mismo producto no puede ser plato y refresco simultáneamente.
+Configura precios del catálogo para los productos autorizados; solo se usan como referencia.
+
+CAJERO
+Marca Almuerzo de empleado o utiliza el menú hamburguesa.
+Selecciona al empleado, UN plato autorizado y UN refresco autorizado.
+El sistema prepara dos productos, una unidad de cada uno. El cobro sigue siendo L 0.00.
+No se permiten complementos extra, segundos platos, segundos refrescos ni aumentar cantidades.
+Si no hay un plato y un refresco configurados por el administrador, no se permite guardar un almuerzo.
+La validación también se aplica en el servidor: no depende solo de ocultar botones.
+
+DATOS
+No se generan facturas ni se consume CAI. Se conserva el registro del costo como gasto interno y la comanda de cocina.
+Los almuerzos históricos se conservan sin alterarlos.
+Al actualizar, ningún producto queda autorizado automáticamente: el administrador configura el menú.
+Si sustituyes todo el catálogo por JSON, vuelve a autorizar los nuevos productos. Las autorizaciones de productos eliminados no se heredan.
+La configuración forma parte de los respaldos completos locales y remotos.
+
+ACTUALIZAR
+Cierra el POS anterior, descomprime este ZIP y ejecuta INICIAR.bat.
+La carpeta de datos existente se conserva.
+No necesitas reinstalar el receptor de respaldo v41 ni modificar su clave.
+
+VERIFICADO
+Siete pruebas de servidor: permisos, menú inicialmente cerrado, productos autorizados, restricciones de combinación/cantidad, complementos bloqueados, reintentos sin duplicar, registro gratis sin factura/CAI/caja y ventas pagadas conservadas.
+Interfaz Qt: selección de plato/refresco, controles de cantidad bloqueados, comanda con ambos productos y configuración administrativa, sin errores JavaScript.

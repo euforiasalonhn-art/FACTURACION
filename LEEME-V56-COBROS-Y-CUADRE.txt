@@ -1,0 +1,46 @@
+FRY CHICKEN POS V56 — MONTOS DE COBRO Y CUADRE DE CAJA
+
+COBRAR CON TARJETA O TRANSFERENCIA
+1. Pulsa Continuar cobro o F10.
+2. Selecciona Tarjeta o Transferencia.
+3. Escribe el monto pagado en el campo correspondiente. Empieza vacio.
+4. El programa indica cuanto falta o cuanto excede el total.
+5. Cuando el monto coincide con el total, puedes Confirmar venta o pulsar F11.
+
+Si el cliente combina medios, selecciona Mixto y digita cada parte. La suma debe
+coincidir con el total de la compra. Solo el efectivo permite entregar cambio.
+Al cambiar de medio se limpian los montos anteriores para evitar reutilizarlos.
+El servidor tambien valida los montos enviados por la pantalla V56.
+
+CUADRAR CAJA
+En Cerrar caja se muestran dos bloques:
+
+COBROS REGISTRADOS EN EL TURNO
+- Efectivo cobrado.
+- Cobrado con tarjeta.
+- Cobrado por transferencia.
+- Total cobrado con todos los medios.
+
+CUADRE DEL EFECTIVO FISICO
+- Fondo inicial.
+- Efectivo cobrado.
+- Otras entradas y salidas de efectivo.
+- Efectivo que debe haber en la caja.
+- Efectivo fisico que cuenta el empleado.
+- Sobrante, faltante o caja cuadrada al guardar el cierre.
+
+El empleado cuenta solamente billetes y monedas. Tarjeta y transferencia quedan
+en sus propios totales; no se suman al efectivo fisico. El cambio ya se descuenta
+del efectivo cobrado; los pagos mixtos se reparten por medio. Las facturas
+anuladas no se suman como ingresos. Los cobros incluyen el envio cuando aplica,
+y el envio sigue separado de la venta de productos en contabilidad.
+
+El mismo desglose queda disponible en el PDF de cierre y en Caja y turnos del
+administrador. Se conserva la sincronizacion contable con Access de V55.
+
+PARA ACTUALIZAR
+Cierra el POS anterior, extrae todo el ZIP y abre INICIAR.bat en la carpeta V56.
+Usa la configuracion de PC 1 o terminal que ya tienes. Actualiza tambien las
+cajas que utilizaran esta pantalla. La base de datos y la ruta de Access siguen
+en la carpeta persistente de Windows. No copies una base vacia sobre tus datos.
+Este paquete contiene codigo fuente sin compilar, igual que la entrega anterior.

@@ -1,0 +1,30 @@
+FRY Chicken POS V46 — Pantalla compacta y beneficios por empresa
+
+EMPRESAS
+Administrador > Empresas exentas / exoneradas.
+El registro inicia vacío. El dueño escribe empresa y RTN, elige EXENTO o EXONERADO y marca exclusivamente los productos autorizados. Puede adjuntar una foto JPG/PNG opcional (máximo 8 MB). Guardar no requiere foto ni documentos adjuntos.
+Se crea también el cliente RTN. En caja, selecciona ese cliente o escribe su RTN: solo los productos autorizados reciben el beneficio. Los demás mantienen su impuesto. El cajero no puede configurar autorizaciones.
+Con precios que incluyen ISV, se retira el impuesto incluido de los productos beneficiados; con precios antes de ISV, se conserva la base y no se agrega ese impuesto. El envío se mantiene separado.
+Cada factura conserva la revisión aplicada. Editar o desactivar una autorización no cambia facturas anteriores. Las fotos anteriores se conservan por revisión en el respaldo completo.
+Al importar un catálogo completo, se desactivan las autorizaciones para que el dueño revise los productos antes de reactivarlas.
+
+PANTALLA Y TECLADO
+Papelera antes del nombre: elimina esa línea del pedido y conserva las otras.
+La compra muestra el total; el desglose no ocupa la pantalla del cajero. La factura mantiene los importes e impuestos distintos de cero.
+Se retiró el descuento de empleado. El almuerzo gratuito conserva su menú autorizado de un plato y un refresco.
+NOTAS permanece arriba, junto a las categorías. Se quitó Vaciar y la cinta café. PC 1/PC02 aparece bajo el menú hamburguesa.
+Modalidades más pequeñas, nombre del cajero naranja, efectivo e importe naranja en modo oscuro y botón Volver blanco con letras negras.
+F10: continuar cobro. F11: confirmar venta cuando la ventana de cobro está abierta. F12: pantalla completa.
+
+ACTUALIZACIÓN
+Este ZIP contiene código fuente SIN COMPILAR, igual que V45.
+Conserva un respaldo completo antes de actualizar. Cierra el POS en las terminales y la máquina principal, extrae esta versión en una carpeta nueva y usa el mismo procedimiento de ejecución o BUILD_EXE_WINDOWS.bat. No copies una base de prueba ni borres la carpeta de datos existente.
+Actualiza primero PC 1 y después reinicia las terminales. La actualización conserva datos y correlativos; no crea ventas de prueba en la instalación del negocio.
+El receptor de respaldos V41 continúa siendo compatible. Consulta LEEME-V44-MULTICAJA.txt para la conexión de terminales.
+
+VALIDACIÓN
+4 pruebas nuevas de empresas: productos seleccionados, rechazo de cambios enviados por el cajero, beneficio con CAI activo y sin foto, precios inclusivos/exclusivos, permisos, foto e historial, conservación de facturas e idempotencia.
+4 pruebas de envío/SAR y 7 de almuerzos/operaciones aprobadas.
+Prueba Qt en terminal remota: papelera, total compacto, etiqueta PC, F10, F11, colores y filas de impuesto cero aprobados. Formulario de empresas probado con guardado sin foto y recuperación de productos seleccionados.
+La antigua suite test_fiscal.py no es compatible con la preparación de sucursal/caja actual: sus 7 casos fallan antes de emitir por no crear sucursal. Los casos fiscales nuevos arriba sí crean sucursal y turno. No se afirma que toda la suite histórica esté aprobada.
+Las pruebas usaron datos aislados y no enviaron documentos a impresoras físicas.

@@ -1,0 +1,17 @@
+FRY Chicken POS V48 — Corrección de Permission denied al abrir dos veces
+
+Se reprodujo en Windows un fallo que coincide con la captura: el arranque anterior leía el primer byte de central.lock o terminal-process.lock antes de comprobar el bloqueo. Si el POS ya estaba abierto, Windows devolvía PermissionError [Errno 13].
+Ahora se intenta adquirir el bloqueo sin leer ni sobrescribir ese byte. El segundo arranque muestra un aviso de que PC 1 o la terminal ya está abierta y termina sin iniciar la base ni otro servidor.
+Un archivo de bloqueo que quedó después de cerrar el programa no impide iniciar nuevamente. No hace falta borrarlo.
+Si ocurre otro error real de permisos, el aviso indica la etapa y guarda el detalle en %LOCALAPPDATA%/FRYChickenPOS/logs/inicio.log. Si esa carpeta no permite escribir, intenta %TEMP%/FRYChickenPOS-logs/inicio.log.
+
+PARA ACTUALIZAR
+1. Cierra la ventana del POS que ya está funcionando. Si es PC 1, esto desconecta temporalmente las otras cajas.
+2. Extrae V48 en una carpeta nueva y abre INICIAR.bat una sola vez. Se conserva la carpeta de datos existente.
+3. Actualiza primero PC 1 y después reinicia las terminales.
+No borres la base de datos ni los archivos de bloqueo. No necesitas ejecutar el programa como administrador para resolver el arranque duplicado.
+Este ZIP es código fuente SIN COMPILAR e incluye los cambios de V47.
+
+VERIFICACIÓN
+4 pruebas aprobadas: bloqueo vacío o residual; dos procesos reales de Windows y reapertura tras cerrar; aviso del arranque duplicado sin inicializar la base; registro de diagnóstico ante otro PermissionError.
+La prueba de dos procesos reprodujo exactamente el PermissionError de la lectura anterior.

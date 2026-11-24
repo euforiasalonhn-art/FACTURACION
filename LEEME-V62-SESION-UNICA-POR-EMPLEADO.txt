@@ -1,0 +1,38 @@
+FRY CHICKEN POS V62 — UN EMPLEADO NO PUEDE INGRESAR EN DOS PCS
+
+REGLA
+Si un empleado tiene sesion en PC 1, su codigo no permite ingresar en PC 2,
+PC 3 ni otra PC. El aviso indica donde esta su sesion o caja pendiente.
+Se aplica tambien al intentar pasar desde una PC adicional hacia PC 1.
+Empleados distintos pueden trabajar al mismo tiempo en sus PCs autorizadas.
+La autorizacion de sucursal y de empleados por PC sigue siendo necesaria.
+El servidor reserva la sesion en una transaccion: dos intentos simultaneos
+del mismo empleado solo pueden producir una sesion aceptada.
+
+PARA CAMBIAR DE PC
+Cuadra la caja y cierra sesion en la PC original. Despues inicia sesion en la
+otra PC. Si cierras normalmente el programa con la caja ya cerrada, la sesion
+de esa PC tambien se libera. No se liberan las sesiones de las demas PCs.
+
+SI HAY UN APAGON O SE CIERRA WINDOWS A LA FUERZA
+La reserva queda en la base de PC 1. No se vence automaticamente por falta de
+conexion. El empleado puede volver a ingresar en la misma PC para recuperar
+su caja. La sesion anterior queda invalidada cuando se recupera el acceso.
+Si necesita otra PC y no puede recuperar la anterior, el administrador debe
+revisar y cuadrar la caja pendiente antes de liberar la sesion.
+
+ADMINISTRADOR
+En Configuracion > Empleados, se muestra En uso: PC n.
+Liberar sesion se habilita cuando no existe caja abierta asociada.
+El servidor vuelve a comprobar el cuadre antes de liberar; no basta con
+habilitar un boton desde el navegador. Una sesion liberada ya no puede
+seguir operando con su cookie anterior. La liberacion queda en auditoria.
+Entrar como administrador no deja al empleado libre para moverse a otra PC
+si en la anterior todavia hay caja abierta.
+
+ACTUALIZAR
+Actualiza PC 1 y las demas PCs con todo el paquete V62.
+En el primer ingreso se pedira autenticarse nuevamente si la sesion venia
+de una version anterior. Los empleados, claves, IDs, ventas y correlativos
+existentes se conservan. Se agrega la tabla central employee_sessions.
+No se modifican las facturas, el informe SAR ni las impresoras de red.

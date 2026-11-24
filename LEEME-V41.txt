@@ -1,0 +1,53 @@
+FRY CHICKEN BACKUP V41 — INSTALADOR WINDOWS 10/11 x64
+
+EN LA PC QUE RECIBIRÁ LOS RESPALDOS
+1. Ejecuta FRYChickenBackup-Instalador-v41-Windows-x64.exe y acepta el permiso de administrador de Windows.
+2. Deja marcada Iniciar con Windows si quieres recibir copias incluso antes de iniciar sesión.
+3. Abre el panel FRY Chicken Backup del escritorio y pulsa Copiar clave de vinculación.
+No requiere instalar Python ni descargar dependencias en esa PC.
+El receptor funciona en segundo plano. Cerrar el panel no lo apaga.
+Sin la opción de inicio automático, puedes arrancarlo desde Iniciar receptor (pide permiso de Windows).
+Los datos se guardan en C:\ProgramData\FRYChickenBackup, separados por cada caja.
+El panel muestra la última factura respaldada y permite exportar la copia para restaurar otra PC.
+La desinstalación elimina programa, tarea y reglas de firewall propias, pero conserva los respaldos y la clave.
+
+EN CADA PC DE CAJA
+Usa la actualización FRYChickenPOS-v41-Conexion-Automatica-Sin-Compilar.zip.
+Cierra la versión anterior, descomprime y abre INICIAR.bat.
+Administrador > Respaldos en red:
+- Pega la clave larga del receptor.
+- Pulsa Buscar receptor en la red.
+- Activa Exigir respaldo remoto y pulsa Guardar y comprobar.
+Esta primera vinculación requiere al administrador. Después, el programa intenta reencontrar el receptor si cambia su IP o falla la dirección guardada.
+V40 puede usar el instalador indicando la IP manualmente; V41 agrega la búsqueda automática.
+Se mantienen el bloqueo de ventas sin respaldo, autenticador de emergencia, comandas, almuerzos y metas.
+Puedes vincular varias cajas a un receptor. Cada instalación debe tener su propia identidad; no clones la misma base en cajas activas simultáneamente.
+
+CABLE DE RED Y WIFI
+Conecta las PCs al mismo router o switch. Para un cable directo entre dos PCs, Windows debe asignar direcciones IP compatibles; el instalador no cambia la configuración IP.
+No necesita Internet dentro de una LAN funcional.
+La búsqueda usa UDP 5059 y el respaldo cifrado TCP 5058. El instalador crea reglas limitadas a la subred local; para Tailscale admite su red privada.
+Solo se aceptan anuncios firmados con la misma clave de vinculación. La clave nunca se anuncia por la red.
+
+BLUETOOTH
+No basta con emparejar dos PCs.
+Windows y los adaptadores deben permitir una conexión de red Bluetooth PAN entre ambos equipos. Primero configúrala desde Windows; el panel incluye un botón para abrir Bluetooth.
+Si esa red IP funciona, el receptor puede recibir por ella y el POS intentará descubrirlo igual que en una LAN; también permite indicar la IP de PAN manualmente.
+El instalador no crea ni empareja automáticamente una red Bluetooth PAN y no añade un controlador Bluetooth. No todos los equipos permiten ese modo PC a PC.
+Referencia de Microsoft: https://support.microsoft.com/en-us/windows/hardware/bluetooth/connect-to-a-bluetooth-network-in-windows
+Para varias cajas, usa preferentemente cable/router; Bluetooth depende del hardware y de Windows.
+
+INTERNET
+Conserva Tailscale en ambas PCs y la dirección alternativa de V40 para lugares distintos.
+La búsqueda automática por broadcast funciona en LAN/PAN; no atraviesa Internet. Para Internet se configura la dirección de Tailscale.
+
+DATOS Y ACTUALIZACIÓN
+El instalador conserva su clave y respaldos de ProgramData al actualizar.
+No traslada automáticamente la carpeta antigua %LOCALAPPDATA%\FRYChickenBackup de V40. Consérvala si ya la utilizabas. La siguiente sincronización de caja vuelve a enviar todo su historial al nuevo receptor.
+El instalador no está firmado con un certificado de editor comercial.
+
+VERIFICACIÓN
+Se probaron los módulos de respaldo/bloqueo/autenticador y el descubrimiento firmado en una red local simulada de loopback.
+Se comprueba el ejecutable compilado con cifrado y bibliotecas gráficas incluidas.
+No se instaló la tarea ni se modificó el inicio de Windows en esta computadora durante la preparación.
+Falta validar instalación, reinicio, cable y Bluetooth PAN con los equipos reales del negocio.

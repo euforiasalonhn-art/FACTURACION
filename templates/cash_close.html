@@ -1,0 +1,21 @@
+<div class="ticket cash-close-ticket">
+<h1>CIERRE DE CAJA #{{ r.cash_number }}</h1>
+<div class="ticket-center">{{ branch.name }}<br>{{ r.terminal_name }}</div>
+{% if copy %}<h2>COPIA</h2>{% endif %}
+<p>Apertura: {{ format_cash_datetime(r.opened_at) }}<br>{{ r.opened_by }}<br>Cierre: {{ format_cash_datetime(r.closed_at) }}<br>{{ r.closed_by }}</p>
+<h2>RESUMEN DE CIERRE</h2>
+{% if r.correction %}<h2>CIERRE RECTIFICADO</h2><p>{{ format_cash_datetime(r.correction.at) }}<br>{{ r.correction.actor }}<br>Motivo: {{ r.correction.reason }}<br>Contado anterior: {{ fmt(r.correction.previous_counted) }}</p>{% endif %}
+<table class="close-rows"><tbody>
+<tr><td>Venta de productos</td><td>{{ fmt(r.sales) }}</td></tr>
+<tr><td>Fondo inicial</td><td>{{ fmt(r.opening) }}</td></tr>
+{% for label,value in r.payments.items() %}{% if value>0 %}<tr><td>{{ label }}</td><td>{{ fmt(value) }}</td></tr>{% endif %}{% endfor %}
+<tr><td>Total cobrado</td><td>{{ fmt(r.payments.values()|sum) }}</td></tr>
+{% if r.mixed_total>0 %}<tr><td>Pagos mixtos (ya incluidos por medio)</td><td>{{ fmt(r.mixed_total) }}</td></tr>{% endif %}
+{% for label,value in [('Otras entradas (+)',r.inputs),('Salidas (-)',r.outputs)] %}{% if value %}<tr><td>{{ label }}</td><td>{{ fmt(value) }}</td></tr>{% endif %}{% endfor %}
+{% for label,value in [('Efectivo esperado',r.expected),('Efectivo físico contado',r.counted)] %}<tr><td>{{ label }}</td><td>{{ fmt(value) }}</td></tr>{% endfor %}
+<tr class="close-difference"><td>{{ 'Sobrante' if r.difference>0 else 'Faltante' if r.difference<0 else 'Caja cuadrada' }}</td><td>{{ fmt(r.difference|abs) }}</td></tr>
+</tbody></table>
+<p>Tarjetas y transferencias no forman parte del efectivo físico.</p>
+{% if r.special_count %}<p>Consumos sin cobro: {{ r.special_count }}<br>Valor de referencia: {{ fmt(r.special_value) }}</p>{% endif %}
+{% if r.movements %}<h2>MOVIMIENTOS</h2>{% for m in r.movements %}<p>{{ m.kind }}: {{ fmt(m.amount) }}<br>{{ m.concept }}{% if m.reference %}<br>{{ m.reference }}{% endif %}</p>{% endfor %}{% endif %}
+</div>

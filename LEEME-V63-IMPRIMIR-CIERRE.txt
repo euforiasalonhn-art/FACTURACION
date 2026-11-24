@@ -1,0 +1,24 @@
+FRY CHICKEN POS V63 — IMPRIMIR CIERRE EN LA IMPRESORA DE CAJA
+
+Despues de contar el efectivo y guardar el cierre, pulsa Imprimir cierre.
+El boton envia el resumen a la cola central de la impresora de CAJA de PC 1.
+No abre el PDF ni solicita guardarlo como archivo.
+
+En el perfil de red de la 3nStar RPT006 se envia como texto ESC/POS, sin logo
+ni imagenes, usando el papel, codificacion, avance y corte que ya configuraste.
+Se incluyen sucursal, PC, numero de caja, fechas, responsables, cobros por medio,
+fondo inicial, entradas, salidas, efectivo esperado y contado, y diferencia.
+El empleado puede tomarle una foto al papel y compartirla con el gerente.
+No se envian mensajes de WhatsApp automaticamente.
+
+Primero debe estar guardado el cierre y configurada la impresora de caja.
+La impresion manual se envia aunque la impresion automatica este desactivada.
+Varios clics mientras esta pendiente reutilizan el mismo trabajo de impresion.
+Si ya se envio o el envio es dudoso, se pide confirmar antes de generar COPIA.
+Las copias se identifican y tambien pueden solicitarse desde la cola de impresion.
+Los cierres figuran como Cierre de caja para distinguirlos de las facturas.
+Imprimir un cierre no crea una factura ni consume un correlativo o CAI.
+
+Actualiza PC 1 y las demas PCs con todo el ZIP V63 y abre INICIAR.bat.
+La prueba de envio se realizo con una impresora TCP simulada; verifica el papel
+en tu impresora configurada antes de tomar la foto.

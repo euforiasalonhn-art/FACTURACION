@@ -1,0 +1,4 @@
+V54 — Cabecera del contador
+Un solo logo en la barra lateral. Fecha y hora alineadas arriba a la derecha. PC 1 en su propia fila bajo el botón de tema, sin superponerse. Los controles de caja y el acceso de configuración no ocupan la cabecera del contador; los filtros de sucursal siguen dentro del reporte.
+Verificado con una cuenta real de prueba de contador en ambos temas, en ventanas de 1920 y 1100 px de ancho: un logo visible y sin superposición de reloj, etiqueta de PC o botón.
+Código fuente sin compilar. Cierra el programa, extrae en una carpeta nueva y abre INICIAR.bat. Actualiza primero PC 1 y reinicia las terminales. Conserva los datos existentes.

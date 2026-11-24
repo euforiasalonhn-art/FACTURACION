@@ -1,0 +1,9 @@
+<div class="kitchen-ticket">
+<div class="kitchen-branch">{{ s.branch_name }}</div>
+<h1>Orden #{{ r.id }}</h1>
+<p class="kitchen-meta">{{ r.created_at[:19]|replace('T',' ') }}<br>Cajero: {{ s.cashier }}</p>
+{% if s.order_name and s.order_name != 'CONSUMIDOR FINAL' %}<p>{{ s.order_name }}</p>{% endif %}
+{% if r.kind == 'MEAL' %}<p>ALMUERZO · GRATIS</p>{% elif r.kind == 'SPECIAL' %}<p>CONSUMO INTERNO</p>{% endif %}
+<table><colgroup><col style="width:18%"><col style="width:82%"></colgroup><thead><tr><th>Cant.</th><th>Descripción</th></tr></thead><tbody>{% for it in s['items'] %}<tr><td>{{ it.quantity }}</td><td>{{ it.name }}</td></tr>{% endfor %}</tbody></table>
+<div class="kitchen-instructions"><strong>{{ s.service }}</strong>{% if s.notes %}<p class="kitchen-notes">{{ s.notes }}</p>{% endif %}</div>
+</div>

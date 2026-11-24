@@ -1,0 +1,16 @@
+FRY CHICKEN POS V45 — NOTAS EN LA PARTE SUPERIOR
+
+El botón NOTAS se ubica al final de los botones de categorías, en el espacio señalado.
+Al pulsarlo abre una ventana con el nombre del cliente para cocina y las notas del pedido.
+Guardar notas o Volver cierra la ventana conservando el texto. El punto junto a NOTAS indica que hay información escrita.
+Los datos se conservan al cambiar de categoría y se envían a la comanda como antes.
+Al finalizar/vaciar el pedido se limpian junto con el resto de la compra.
+Se retiró el apartado desplegable del panel Compra actual.
+
+ACTUALIZACIÓN
+Cierra el POS de PC 1, descomprime esta versión y abre INICIAR.bat.
+Se conserva su configuración de servidor y la base de datos.
+Reabre las terminales para que carguen la nueva pantalla. Las terminales v44 son compatibles porque reciben la interfaz desde PC 1.
+No necesitas modificar las impresoras ni reinstalar el receptor de respaldo.
+
+Verificado visualmente en modo oscuro y caja de sucursal: botón en la segunda fila junto a Refrescos; apertura, conservación del texto y notas en la comanda aprobadas.

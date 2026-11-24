@@ -1,0 +1,650 @@
+[
+  {
+    "name": "Chicken Fingers (Orden de 8)",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "985a7d53b10b397c5945.jpg",
+    "image_source": "fotos/FINGER2.bmp"
+  },
+  {
+    "name": "Chicken Fingers (Orden de 6)",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "505fc1ee7139714c86e9.jpg",
+    "image_source": "fotos/FINGER2.bmp"
+  },
+  {
+    "name": "Chicken Fingers (Orden de 4)",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "3a0599e0f5ce37446626.jpg",
+    "image_source": "fotos/FINGER2.bmp"
+  },
+  {
+    "name": "Pollo con tajadas",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "5b5cbf1d7088617aa3a2.jpg",
+    "image_source": "fotos/POLLOTAJA.bmp"
+  },
+  {
+    "name": "Pollo con papas",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "667b8b2a6181fbbd5d2a.jpg",
+    "image_source": "fotos/POLLOPAPAS.bmp"
+  },
+  {
+    "name": "Chuleta típica",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "6c0b2339fa88c04f54ca.jpg",
+    "image_source": "fotos/CHULETA.bmp"
+  },
+  {
+    "name": "Nachos con pollo",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "43212f8289e4708a719f.jpg",
+    "image_source": "fotos/NACHOS.bmp"
+  },
+  {
+    "name": "Orden tacos",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "7b5ef4c4b1b4810a934b.jpg",
+    "image_source": "fotos/TACOS.bmp"
+  },
+  {
+    "name": "Tajadas con carne",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "3eb3b7f0f5e01fecb4e9.jpg",
+    "image_source": "fotos/TAJADAS CARNE.bmp"
+  },
+  {
+    "name": "1/4 pollo asado con papas",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "c7ae9b4d2c8e1e0b20f4.jpg",
+    "image_source": "fotos/POLLO ASA.jpg"
+  },
+  {
+    "name": "1/4 pollo asado con tajadas",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "a0081ec77de53bb4c6f0.jpg",
+    "image_source": "fotos/POLLO ASA.jpg"
+  },
+  {
+    "name": "1/4 pollo asado con tortilla",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "3b864e692f1c4785a693.jpg",
+    "image_source": "fotos/POLLO ASA.jpg"
+  },
+  {
+    "name": "Nachos cheddar con carne molida",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "849bb251ac9ac2e437a6.jpg",
+    "image_source": "fotos/Nachos-con-carne.jpg"
+  },
+  {
+    "name": "Pollo frito con tortilla",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "8bd96b631b770530e377.jpg",
+    "image_source": "fotos/pollo frito.jpg"
+  },
+  {
+    "name": "2 piezas con tajadas",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "a3f8108bd72d4a18f379.jpg",
+    "image_source": "fotos/POLLOTAJA.bmp"
+  },
+  {
+    "name": "Pollo asado arroz chino",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "23cd9eb38a2446a63a8a.jpg",
+    "image_source": "fotos/POLLO ASADO ARROZ.bmp"
+  },
+  {
+    "name": "Pollo frito y arroz chino",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "26efa21dd6d38576710b.jpg",
+    "image_source": "fotos/POLLO FRITO ARROZ.bmp"
+  },
+  {
+    "name": "1 unidad de taco",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "67e4a8765e89bac857be.jpg",
+    "image_source": "fotos/TACOS.bmp"
+  },
+  {
+    "name": "Nacho cheddar con pollo",
+    "category": "Personales sin refresco",
+    "price_cents": null,
+    "price_source": null,
+    "image": "64ec229d473659424e3e.jpg",
+    "image_source": "fotos/NACHOS.bmp"
+  },
+  {
+    "name": "Refresco 3 litros",
+    "category": "Refrescos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "93d1f2b4aa4692c95778.jpg",
+    "image_source": "fotos/3LITROS.bmp"
+  },
+  {
+    "name": "Refresco 2 litros",
+    "category": "Refrescos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "d5835b5266abc0cdfdb8.jpg",
+    "image_source": "fotos/COCA2LITROS.bmp"
+  },
+  {
+    "name": "Refresco 500 ml",
+    "category": "Refrescos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "b3e7af22846c21f98626.jpg",
+    "image_source": "fotos/COCACOLA 500 ML.bmp"
+  },
+  {
+    "name": "Agua Dasani 500 ml",
+    "category": "Refrescos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "d61ea24803e84b8800a6.jpg",
+    "image_source": "fotos/AGUA DASANI.bmp"
+  },
+  {
+    "name": "Agua en bolsa",
+    "category": "Refrescos",
+    "price_cents": 300,
+    "price_source": "data.db: AGUA EN BOLSA",
+    "image": "80566caa08a2a00c8b8f.jpg",
+    "image_source": "fotos/agua_360.png"
+  },
+  {
+    "name": "Refresco en lata",
+    "category": "Refrescos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "49911f66c22b4526577a.jpg",
+    "image_source": "fotos/PEPSI LATA.jpg"
+  },
+  {
+    "name": "Refresco 1.1 litros",
+    "category": "Refrescos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Agua bote pequeño",
+    "category": "Refrescos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Agua en bote grande",
+    "category": "Refrescos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Jugo natural",
+    "category": "Refrescos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "89baedd16d4d04240ae0.jpg",
+    "image_source": "fotos/juegos-naturales.jpg"
+  },
+  {
+    "name": "Súper combo del sabor asado",
+    "category": "Familiares",
+    "price_cents": 56900,
+    "price_source": "SUPER COMBO SABOR.bmp",
+    "image": "4eb06bb50e66c8d7a50e.jpg",
+    "image_source": "fotos/SUPER COMBO SABOR.bmp"
+  },
+  {
+    "name": "Súper combo del sabor frito",
+    "category": "Familiares",
+    "price_cents": 64500,
+    "price_source": "SUPER COMBO SABOR FRITO.bmp",
+    "image": "e7bf7228995c38fe1480.jpg",
+    "image_source": "fotos/SUPER COMBO SABOR FRITO.bmp"
+  },
+  {
+    "name": "Mega combo familiar 12 piezas",
+    "category": "Familiares",
+    "price_cents": 56000,
+    "price_source": "MEGA COMBO FAMILIAR12.bmp",
+    "image": "81047417dab3b3a54d68.jpg",
+    "image_source": "fotos/MEGA COMBO FAMILIAR12.bmp"
+  },
+  {
+    "name": "Combo familiar 8 piezas",
+    "category": "Familiares",
+    "price_cents": 39000,
+    "price_source": "MEGA COMBO FAMILIAR8.bmp",
+    "image": "66d39e79d42722a8cfc0.jpg",
+    "image_source": "fotos/MEGA COMBO FAMILIAR8.bmp"
+  },
+  {
+    "name": "Combo familiar con pollo asado",
+    "category": "Familiares",
+    "price_cents": 36000,
+    "price_source": "COMBO FAMILIAR PASADO.bmp",
+    "image": "a128b9b974991dd412bc.jpg",
+    "image_source": "fotos/COMBO FAMILIAR PASADO.bmp"
+  },
+  {
+    "name": "Orden tajadas personal",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "73a6bdb9c676336217be.jpg",
+    "image_source": "fotos/Tpersonal.bmp"
+  },
+  {
+    "name": "Orden tajadas familiar",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "efcdb3b7d692e565200b.jpg",
+    "image_source": "fotos/tajadas.jpg"
+  },
+  {
+    "name": "Orden papas personal",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "f78503266cc28c70bae1.jpg",
+    "image_source": "fotos/papas personal.bmp"
+  },
+  {
+    "name": "Orden papas familiar",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "7db345ad265a4ab6a8f8.jpg",
+    "image_source": "fotos/PAPAS.jpg"
+  },
+  {
+    "name": "Ensalada personal",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "9ae2723ee58454239d84.jpg",
+    "image_source": "fotos/ensalada personal.bmp"
+  },
+  {
+    "name": "Ensalada familiar",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "c3051dab84d4571e1b35.jpg",
+    "image_source": "fotos/ensalada familiar.bmp"
+  },
+  {
+    "name": "Encurtido personal",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "0efe4935dd20bf6146c9.jpg",
+    "image_source": "fotos/encurtido.bmp"
+  },
+  {
+    "name": "Encurtido familiar",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "ec3ecffdd58ad5e21989.jpg",
+    "image_source": "fotos/encurtido.bmp"
+  },
+  {
+    "name": "Aderezo extra",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "4678b156b5caa7fbc482.jpg",
+    "image_source": "fotos/aderezo.bmp"
+  },
+  {
+    "name": "Tortillas paquete",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "258f88b0a70e23b5701c.jpg",
+    "image_source": "fotos/tortilla maiz.jpeg"
+  },
+  {
+    "name": "Aceite quemado",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Ketchup",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "0bc3a5ae30466de3d77b.jpg",
+    "image_source": "fotos/ketchup.bmp"
+  },
+  {
+    "name": "Plato",
+    "category": "Complementos",
+    "price_cents": 200,
+    "price_source": "data.db: PLATO",
+    "image": "87e4571bc7b47363d74a.jpg",
+    "image_source": "fotos/plato_plastico_8.jpg"
+  },
+  {
+    "name": "Tenedor",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "de8c495f5243f6155d9c.jpg",
+    "image_source": "fotos/tenedor.bmp"
+  },
+  {
+    "name": "Vaso",
+    "category": "Complementos",
+    "price_cents": 100,
+    "price_source": "data.db: VASO DESECHABLE",
+    "image": "a0739df1d6c95d6cf31f.jpg",
+    "image_source": "fotos/vaso.jpg"
+  },
+  {
+    "name": "Bandeja",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "49aa06a59e2b30ff3c90.jpg",
+    "image_source": "fotos/BANDEJA.bmp"
+  },
+  {
+    "name": "1 unidad de tortilla",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "a9137477edc73e05a35c.jpg",
+    "image_source": "fotos/tortilla maiz.jpeg"
+  },
+  {
+    "name": "Queso extra",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Frijoles extras",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "91f0081548c642237e38.jpg",
+    "image_source": "fotos/frijoles.jpg"
+  },
+  {
+    "name": "Chimol extra",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Por pechuga",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Extra jalapeño",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Extra cheddar",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Extra tajadas",
+    "category": "Complementos",
+    "price_cents": null,
+    "price_source": null,
+    "image": "7b7a86e56f042669d8fc.jpg",
+    "image_source": "fotos/tajadas.jpg"
+  },
+  {
+    "name": "Combo chicken fingers",
+    "category": "Promociones",
+    "price_cents": 29200,
+    "price_source": "PARA2 FINGER.bmp",
+    "image": "edb2fef9c6ed3041b642.jpg",
+    "image_source": "fotos/PARA2 FINGER.bmp"
+  },
+  {
+    "name": "Promo compartida",
+    "category": "Promociones",
+    "price_cents": 25900,
+    "price_source": "PARA2.bmp",
+    "image": "5e78131848d0657c2b45.jpg",
+    "image_source": "fotos/PARA2.bmp"
+  },
+  {
+    "name": "Promo en pareja",
+    "category": "Promociones",
+    "price_cents": 21500,
+    "price_source": "PROMO EN PAREJA.bmp",
+    "image": "9f23fcac99ccc04f0675.jpg",
+    "image_source": "fotos/PROMO EN PAREJA.bmp"
+  },
+  {
+    "name": "Pollo arroz chino",
+    "category": "Promociones",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Pollo relleno",
+    "category": "Promociones",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Promo de 2 nachos con pollo",
+    "category": "Promociones",
+    "price_cents": null,
+    "price_source": null,
+    "image": "15578aca5aec57bcc19c.jpg",
+    "image_source": "fotos/NACHOS.bmp"
+  },
+  {
+    "name": "Promo 1 junior con tajadas",
+    "category": "Promociones",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Promo 1 orden de tacos",
+    "category": "Promociones",
+    "price_cents": null,
+    "price_source": null,
+    "image": "eece6a292c844513f315.jpg",
+    "image_source": "fotos/TACOS.bmp"
+  },
+  {
+    "name": "Promo de 1 unidad de taco",
+    "category": "Promociones",
+    "price_cents": null,
+    "price_source": null,
+    "image": "54c5ba6fb3565e2ddfd8.jpg",
+    "image_source": "fotos/TACOS.bmp"
+  },
+  {
+    "name": "8 piezas pollo frito",
+    "category": "Pollo entero/piezas",
+    "price_cents": null,
+    "price_source": null,
+    "image": "913c8ce474655fb1c7fa.jpg",
+    "image_source": "fotos/8 PIEZAS FRITO.bmp"
+  },
+  {
+    "name": "6 piezas pollo frito",
+    "category": "Pollo entero/piezas",
+    "price_cents": null,
+    "price_source": null,
+    "image": "2ccaae8401f72684b374.jpg",
+    "image_source": "fotos/6 PIEZAS FRITO.bmp"
+  },
+  {
+    "name": "4 piezas pollo frito",
+    "category": "Pollo entero/piezas",
+    "price_cents": null,
+    "price_source": null,
+    "image": "24eec72f2cc44a756c7b.jpg",
+    "image_source": "fotos/4 PIEZAS FRITO.bmp"
+  },
+  {
+    "name": "1 pieza pollo",
+    "category": "Pollo entero/piezas",
+    "price_cents": null,
+    "price_source": null,
+    "image": "7db3b52f562309403bd1.jpg",
+    "image_source": "fotos/1pieza.jpg"
+  },
+  {
+    "name": "1 pechuga frita",
+    "category": "Pollo entero/piezas",
+    "price_cents": null,
+    "price_source": null,
+    "image": "789a97ae173db04a5b4b.jpg",
+    "image_source": "fotos/pechuga.jpg"
+  },
+  {
+    "name": "2 piezas de pollo frito",
+    "category": "Pollo entero/piezas",
+    "price_cents": null,
+    "price_source": null,
+    "image": "b0d9fd73836b448b9838.jpg",
+    "image_source": "fotos/2 piezas.jpg"
+  },
+  {
+    "name": "Pieza extra",
+    "category": "Pollo entero/piezas",
+    "price_cents": null,
+    "price_source": null,
+    "image": "ac950fb1416776607da7.jpg",
+    "image_source": "fotos/1pieza.jpg"
+  },
+  {
+    "name": "Arroz chino personal",
+    "category": "Arroz chino",
+    "price_cents": null,
+    "price_source": null,
+    "image": "d2732c1948ed8a6dba2b.jpg",
+    "image_source": "fotos/ARROZ.Jpeg"
+  },
+  {
+    "name": "Arroz chino familiar",
+    "category": "Arroz chino",
+    "price_cents": null,
+    "price_source": null,
+    "image": "439342e5f12e72eeaf9b.jpg",
+    "image_source": "fotos/ARROZ.Jpeg"
+  },
+  {
+    "name": "Pollo asado entero",
+    "category": "Pollo asado",
+    "price_cents": null,
+    "price_source": null,
+    "image": "ac5e8c7f4bbb458cde26.jpg",
+    "image_source": "fotos/POLLO ENTERO ASADO.bmp"
+  },
+  {
+    "name": "Medio pollo asado",
+    "category": "Pollo asado",
+    "price_cents": null,
+    "price_source": null,
+    "image": "4cc3a432f176f2ed18df.jpg",
+    "image_source": "fotos/POLLO ENTERO ASADO MEDIO.bmp"
+  },
+  {
+    "name": "Cuarto de pollo asado",
+    "category": "Pollo asado",
+    "price_cents": null,
+    "price_source": null,
+    "image": "2b0d8e87354e2b63a7d7.jpg",
+    "image_source": "fotos/POLLO ASA.jpg"
+  },
+  {
+    "name": "Menú económico personal",
+    "category": "Económicos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  },
+  {
+    "name": "Menú económico familiar",
+    "category": "Económicos",
+    "price_cents": null,
+    "price_source": null,
+    "image": null,
+    "image_source": null
+  }
+]

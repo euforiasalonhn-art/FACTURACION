@@ -1,0 +1,22 @@
+FRY Chicken POS V47 — Ingreso con contraseña de sucursal y código de empleado
+
+NUEVO INGRESO
+1. Seleccionar sucursal e ingresar la contraseña de esa sucursal.
+2. Después de validarla, ingresar el código personal del empleado.
+Hasta completar ambos pasos no se puede consultar productos ni facturar. El código del empleado por sí solo ya no permite iniciar sesión.
+El segundo paso queda vinculado a la misma sucursal y terminal durante cinco minutos. Cambiar de sucursal o volver al primer paso exige nuevamente la contraseña. Si vence la validación, el formulario vuelve a solicitarla.
+Las contraseñas de sucursal existentes se conservan. El administrador puede cambiarlas en Puntos de venta. No se guarda la contraseña escrita en la pantalla ni en la validación intermedia.
+Se mantienen los permisos de empleados asignados a cada terminal y PC 1. Un código de un empleado no autorizado para esa terminal es rechazado.
+Administrador y contador conservan sus accesos habituales.
+
+ACTUALIZAR
+Código fuente SIN COMPILAR. Incluye los cambios de V46.
+Cierra las terminales y PC 1, conserva un respaldo completo y actualiza primero PC 1. Después reinicia las terminales para que carguen el nuevo ingreso.
+Conserva la carpeta de datos existente. No se reinician sucursales, ventas, precios ni correlativos.
+Usa el mismo procedimiento de ejecución o BUILD_EXE_WINDOWS.bat de las versiones anteriores.
+
+VERIFICACIÓN
+4 pruebas nuevas aprobadas: no omitir contraseña, credenciales incorrectas, acceso bloqueado entre pasos, vínculo de sucursal, vencimiento, cambio de contraseña, límite de intentos y acceso de administrador.
+9 pruebas de multicaja aprobadas usando los dos pasos: numeración concurrente, permisos, sesiones, turnos, reintentos e impresión sin duplicados.
+Prueba Qt con terminal remota aprobada: contraseña primero, código después, volver reinicia el paso, errores de ambas credenciales e ingreso completo.
+Pruebas con base aislada, sin impresión física.

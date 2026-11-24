@@ -1,0 +1,37 @@
+FRY CHICKEN POS V43 — MODALIDAD, ENVÍOS Y TARJETA EN SAR
+
+MODALIDADES
+En la compra actual hay tres botones visibles: COMER AQUÍ, PARA LLEVAR y ENVÍO.
+COMER AQUI y PARA LLEVAR se imprimen en el encabezado y también en NOTAS de la comanda.
+ENVÍO abre una ventana para escribir el precio del envío. Al confirmar, la comanda indica PARA ENVIO en su encabezado y sus notas.
+Las notas adicionales del cajero se conservan debajo de la modalidad.
+Cancelar la ventana conserva la modalidad e importe anteriores. Cambiar a comer aquí o para llevar elimina el cobro de envío.
+Al terminar una venta se reinician modalidad e importe para evitar cobrarlos en el siguiente pedido.
+
+ENVÍO SEPARADO
+La factura cobra productos + envío y muestra el importe del envío por cuenta de tercero por separado.
+No se clasifica el envío como producto ni se le aplica el descuento de productos. No altera las bases ni ISV de los productos.
+Los reportes de ventas, CSV y resumen contable separan venta de productos, envío y total facturado/cobrado. El envío no aumenta las metas.
+En los reportes de ventas por medio de pago, el envío se reparte proporcionalmente entre los medios de cobro para excluirlo del ingreso por productos; se conserva cada centavo.
+El efectivo esperado incluye lo realmente cobrado hasta que se pague el envío. No se descuenta automáticamente de caja: al pagar al repartidor, registra el EGRESO en Caja y turnos con su referencia, evitando descontarlo dos veces.
+Ejemplo: productos L 115.00 + envío L 35.00 = factura L 150.00. Venta de productos y avance de metas: L 115.00. Con precios inclusivos al 15%, la base de productos sigue siendo L 100.00 y el ISV L 15.00.
+El envío con cobro se registra en ventas, no dentro de un consumo gratis de empleado/dueño.
+Los datos históricos permanecen como se emitieron; no se reclasifican cargos de envío registrados anteriormente como productos.
+
+TARJETA EN INFORMES SAR
+Se incluyen todas las ventas emitidas con tarjeta y pagos mixtos que contengan tarjeta, dentro de la sucursal y fechas consultadas.
+Los filtros de medio de pago y modalidad Normal/RTN no excluyen ventas del SAR.
+Se conserva el alcance de documentos elegido y se amplía para incluir los documentos pagados con tarjeta aun si son internos. Los internos se identifican; su presencia no acredita autorización CAI.
+Las anuladas no se suman, ni tampoco los consumos gratuitos.
+El envío separado no se suma a las bases gravadas de productos del SAR.
+Pantalla, PDF y Excel usan los mismos datos; se muestra el medio de pago para comprobar Tarjeta/Mixto.
+
+ACTUALIZAR
+Cierra el POS, descomprime este ZIP completo y ejecuta INICIAR.bat.
+Se conservan datos, empleados, menú gratuito, metas, impresoras y configuración de respaldo. No necesitas reinstalar el receptor v41.
+
+VERIFICADO
+Cuatro pruebas nuevas de servidor: total con envío, separación de ventas/caja/metas, anulación, pagos de tarjeta y mixtos, filtros SAR, exportaciones PDF/Excel, importes inválidos y restricciones de consumos gratis.
+Siete pruebas anteriores de empleados y operaciones siguen aprobadas.
+Interfaz Qt: ventana de precio, total facturado, comprobante, modalidad en notas de cocina, separación del reporte e inclusión de tarjeta en SAR, sin errores JavaScript.
+Impresión física y operación con las PCs del negocio requieren verificación en sus equipos.

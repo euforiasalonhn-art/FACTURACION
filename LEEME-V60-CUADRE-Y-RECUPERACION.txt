@@ -1,0 +1,52 @@
+FRY CHICKEN POS V60 — CUADRE OBLIGATORIO Y GUARDADO DURABLE
+
+SALIDA DEL PROGRAMA
+F4, Alt+F4 y la X de la ventana comprueban la caja antes de cerrar.
+Si hay caja abierta, la ventana permanece y pide cuadrarla.
+El empleado tampoco puede cerrar sesion desde el menu mientras su caja siga abierta.
+F8 no permite cambiar la funcion de la PC con cajas pendientes de cierre.
+PC 1 comprueba todas las cajas, porque atiende a las terminales del local.
+Una terminal comprueba su propia caja con PC 1. Si no hay conexion para
+verificarla, no autoriza la salida normal. Un cobro pendiente tambien debe
+recuperarse o cancelarse antes de salir.
+
+CAMBIO DE DIA
+Si se abrio la caja el 15 y vuelve a entrar el 16, debe contar y cerrar esa caja
+antes de vender, registrar almuerzos gratis o registrar consumos del nuevo dia.
+El programa no inventa un cuadre ni cierra automaticamente con efectivo esperado.
+Usa la fecha de Honduras. Conserva fecha de apertura, ventas y movimientos.
+No permite abrir otra caja en esa terminal para ocultar la anterior.
+Al iniciar sesion muestra el cuadre pendiente. Si esta trabajando al cambiar
+de dia, lo detecta periodicamente; el servidor valida nuevamente cada operacion.
+La recuperacion de una factura que ya fue confirmada sigue disponible y no
+genera otra factura aunque haya cambiado el dia.
+
+SI SE APAGA O SE DESCONECTA LA PC
+Cada venta se confirma en una transaccion de SQLite antes de responder que se
+guardo. Se establece PRAGMA synchronous=EXTRA en las conexiones de la aplicacion.
+Se mantiene el respaldo JSON completo y la cola durable para Access; el respaldo
+de red conserva su configuracion anterior y se exige cuando esta habilitado.
+Al reiniciar se conserva la caja abierta y se exige el cuadre si corresponde.
+Si una terminal tiene un cobro sin confirmacion, utiliza Cobro pendiente para
+recuperar el mismo identificador antes de volver a cobrar.
+Access sigue siendo una copia asincrona: el archivo principal del POS es el
+registro de la ultima venta confirmada, no la ultima actualizacion de Access.
+
+LIMITES IMPORTANTES
+El programa bloquea la salida normal; no puede impedir cortar la electricidad,
+desconectar un cable, forzar Windows o terminar procesos desde el sistema.
+La prueba realizada interrumpio el proceso despues de confirmar una venta y
+verifico integridad, recuperacion sin duplicados y caja pendiente al reiniciar.
+No equivale a una prueba fisica de desconexion electrica de tu disco.
+Una venta que aun no recibio confirmacion debe recuperarse, no suponerse cobrada.
+Ningun programa puede garantizar datos si el disco se dana o no respeta las
+escrituras confirmadas. Conserva los respaldos externos; una UPS ayuda ante apagones.
+
+ACTUALIZACION
+Cierra las cajas pendientes para poder cerrar la version anterior con normalidad.
+Extrae todo el ZIP V60 y abre INICIAR.bat. Actualiza PC 1 y las terminales
+que utilizaran este bloqueo. Conserva la carpeta persistente de datos.
+Se mantienen las impresoras Ethernet de V59 y las comandas compactas de V58.
+
+Referencia tecnica del guardado SQLite:
+https://www.sqlite.org/pragma.html#pragma_synchronous

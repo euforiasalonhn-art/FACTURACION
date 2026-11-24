@@ -1,0 +1,16 @@
+FRY Chicken POS V50 — Contraste de modo claro y oscuro
+
+Se unificaron los colores de fondo, texto, campos, bordes, avisos y estados activos en una paleta por tema.
+Corregido el fondo blanco de Cliente con RTN en modo oscuro, incluidos Cliente registrado y Datos de exoneración.
+Se revisaron formularios, ventanas, menús, tablas, campos de búsqueda, notas, caja, cobro, clientes, configuración, reportes y paneles administrativos.
+Se mejoró el contraste de textos secundarios, indicaciones de campos vacíos, precios, mensajes de error, estado de caja, edición de precios y agregar foto.
+Los controles deshabilitados conservan texto legible y el foco del teclado es visible. El botón Volver de cobro conserva fondo blanco y texto negro en modo oscuro.
+Las facturas, comandas y QR mantienen negro sobre blanco. Los ajustes nuevos solo se aplican en pantalla.
+
+VERIFICACIÓN
+Recorrido Qt de todas las vistas y ventanas presentes en ambos temas, con datos de prueba de productos y caja: 1302 comparaciones de texto y fondo, sin resultados inferiores a 4.5:1 para texto normal o 3:1 para texto grande en ese recorrido.
+Revisión visual del panel RTN en claro y oscuro.
+Se mantiene el flujo de bienvenida y las funciones de V49; el cambio es de estilos.
+
+ACTUALIZAR
+Código fuente SIN COMPILAR. Cierra el programa, extrae V50 en una carpeta nueva y abre INICIAR.bat una sola vez. Actualiza primero PC 1 y reinicia las terminales. Conserva la carpeta de datos existente.

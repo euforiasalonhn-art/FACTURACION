@@ -1,0 +1,23 @@
+FRY Chicken POS V49 — Bienvenida del empleado sobre el catálogo
+
+FLUJO
+1. Seleccionar sucursal y escribir su contraseña en el acceso habitual.
+2. Al validarla, se cierra el acceso y aparece la pantalla de productos durante un segundo.
+3. Se abre una ventana pequeña sobre el catálogo: Buenos días / Buenas tardes / Buenas noches. Por favor, ingrese su número de empleado para continuar.
+4. Al validar el código personal, continúa el ingreso y la apertura o recuperación de caja habitual.
+El segundo paso ya no aparece dentro de la pantalla de contraseña de sucursal.
+
+SALUDO
+Se usa la hora de la computadora: buenos días de 05:00 a 11:59, buenas tardes de 12:00 a 17:59 y buenas noches de 18:00 a 04:59.
+Se conservan los códigos de empleado registrados actualmente por el administrador.
+Mientras se ve el catálogo y la bienvenida, el cobro permanece bloqueado. El servidor sigue exigiendo ambas credenciales y los permisos de la terminal. Ver productos no habilita el acceso a clientes, ventas ni caja.
+Volver o Escape regresa a la contraseña de sucursal. Una validación vencida vuelve a solicitar esa contraseña.
+
+ACTUALIZAR
+Código fuente SIN COMPILAR. Incluye V48 y las versiones anteriores.
+Cierra el POS antes de actualizar. Extrae en una carpeta nueva y abre INICIAR.bat una sola vez. Actualiza primero PC 1 y reinicia las terminales.
+Conserva la carpeta de datos existente. No se reinician ventas ni correlativos.
+
+VERIFICACIÓN
+5 pruebas de acceso aprobadas, incluida la vista previa limitada a productos/fotos y el bloqueo de las demás operaciones hasta identificar al empleado.
+Prueba Qt con terminal remota aprobada: catálogo visible sin ventanas antes de la bienvenida, demora mínima de un segundo, saludos por horario, ventana separada, rechazo de código incorrecto e ingreso correcto.

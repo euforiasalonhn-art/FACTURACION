@@ -1,0 +1,4 @@
+V51 — Fotos más grandes en el catálogo
+Se oculta la categoría dentro de la tarjeta. La imagen ocupa todo el ancho y un espacio más alto, sin recortar el contenido de las promociones. El nombre permanece debajo y el precio aumenta a 20 px.
+Verificado en Qt en los dos temas: categoría oculta, foto de más del 95 % del ancho y precio de 20 px.
+Código fuente SIN COMPILAR. Cierra el POS, extrae esta versión en una carpeta nueva y abre INICIAR.bat. Actualiza primero PC 1 y reinicia las terminales. Conserva la carpeta de datos existente.

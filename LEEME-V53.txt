@@ -1,0 +1,3 @@
+V53 — Precio de envío
+Las flechas recorren L 30, L 35, L 40 y así hasta L 200. El campo valida ese rango y pasos de 5. Verificado en Qt, incluidos ambos límites.
+Código fuente sin compilar. Cierra el POS, extrae en una carpeta nueva y abre INICIAR.bat. Conserva los datos existentes.
